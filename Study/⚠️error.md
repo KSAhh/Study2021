@@ -24,6 +24,22 @@ hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.  
 - 원인 : Repository를 만들 때, README.md를 미리 생성하고 main branch에 push 하는 경우  
 - 해결 : `$ git push -u origin +master` +를 붙여줌  
+    - : [사이트](https://doozi316.github.io/errorlog/2019/09/30/error1/)  
+
+warning: LF will be replaced by CRLF in Study/기타.md.  
+- 원인
+  - MAC or Linux를 쓰는 개발자와, Window를 쓰는 개발자가 협업할 때 발생
+  - Whitespace 에러  
+  - 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루어지지만, 윈도우에서는 줄 하나가 CR(Carriage Return)와 LF(Line Feed) 즉, CRLF로 이루어지기 때문  
+  - 어느 한 쪽을 선택할지 Git은 혼란스러움  
+- 해결  
+  - 자동 변환해주는 Git의 기능(core.autocrlf) on
+  - git에 코드를 추가(커밋) 할 때 : CRLF → LF 변환  
+  - git의 코드를 조회(clone) 할 때 : LF → CRLF 변환
+  - Window사용자 : `git config --global core.autocrlf ture` 현재 프로젝트에만 적용하려면 --global 제외  
+  - Linux, MAC : `git config --global core.autocorlf true input`  
+  - 이외에 에러 메세지 끄고 싶을 때 : git config --global core.safecrlf false  
+  - [사이트](https://blog.jaeyoon.io/2018/01/git-crlf.html)  
 
 # vscode  
 - 주석 안될때 / 마이크로소프트 입력기로 변환  
