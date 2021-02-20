@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <!-- 1. action과 method확인  -->
+
+    <h2>1. 회원가입</h2>
+    <form action="my-app" method="get">
+        <input type="text" name="id">
+    </form>
+    <!-- 결과 -->
+    <!-- file:///C:/Users/user/Downloads/Workspace/Study_CodeLion/my-app?id=ksahh -->
+    <!-- id=ksahh를 확인할 수 있음 즉, id가 key로 작동하고 데이터 ksahh가 value로 작동 -->
+
+
+
+    <!-- 2. placeholder 속성 사용 -->
+
+    <h2>2. 회원가입</h2>
+    <form action="my-app" method="get">
+        <input type="text" name="id" placeholder="아이디를 입력하세요.">
+    </form>
+    <!-- 결과 -->
+    <!-- 입력창에 "아이디를 입력하세요."라는 텍스트가 생김 -->
+
+
+
+    <!-- 3. value 속성 사용 -->
+
+    <h2>3. 회원가입</h2>
+    <form action="my-app" method="get">
+        <input type="text" name="id" placeholder="아이디를 입력하세요." value="Here!">
+    </form>
+    <!-- 결과 -->
+    <!-- 입력창에 초기값인 "Here!"이라는 텍스트가 생김 -->
+
+
+
+    <!-- 4. label & div 태그 사용 -->
+
+    <h2>4. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+    </form>
+    <!-- 결과 -->
+    <!-- 아이디 입력창과, 비밀번호 입력창이 생김 / "아이디:" 또는 "비밀버호:"를 누르면 입력창이 활성화 됨 / label의 특성 때문-->
+    <!-- div태그를 사용하면 아이디와 비밀버호가 다른 행에 생김 -->
+
+
+
+    <!-- 5. label & div 태그 사용 -->
+
+    <h2>5. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+    </form>
+    <!-- 결과 -->
+    <!-- 아이디 입력창과, 비밀번호 입력창이 생김 / "아이디:" 또는 "비밀버호:"를 누르면 입력창이 활성화 됨 / label의 특성 때문-->
+    <!-- div태그를 사용하면 아이디와 비밀버호가 다른 행에 생김 -->
+
+
+
+    <!-- 6. select 태그 사용 -->
+
+    <h2>6. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+
+            <div>
+                <label for="gender">성별: </label>
+                <select name="gender" id="gender">
+                    <option value="male">남성</option>
+                    <option value="female">여성</option>
+                </select>
+            </div>
+            <div>
+                <label for="Major">전공:</label>
+                <select name="M" id="Major">
+                    <option value="CSE">컴퓨터공학부</option>
+                    <option value="MECHA">메카트로닉스공학부</option>
+                </select>
+    </form>
+    <!-- 결과 -->
+    <!-- 이전 결과 + 전공 선택 박스, 성별 선택박스 생성-->
+
+
+
+
+    <!-- 7. textarea 태그 사용 -->
+
+    <h2>7. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+
+            <div>
+                <label for="gender">성별: </label>
+                <select name="gender" id="gender">
+                    <option value="male">남성</option>
+                    <option value="female">여성</option>
+                </select>
+            </div>
+            <div>
+                <label for="Major">전공:</label>
+                <select name="M" id="Major">
+                    <option value="CSE">컴퓨터공학부</option>
+                    <option value="MECHA">메카트로닉스공학부</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="introduce">자기소개: </label>
+                <textarea name="introduce" id="introduce" cols="50" rows="10" placeholder="자기소개를 입력하세요."></textarea>
+            </div>
+
+    </form> <!-- 결과 -->
+    <!-- 이전 결과 + 자기소개 란 생성 -->
+
+
+
+    <!-- 7. textarea 태그 사용 -->
+
+    <h2>7. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+
+            <div>
+                <label for="gender">성별: </label>
+                <select name="gender" id="gender">
+                    <option value="male">남성</option>
+                    <option value="female">여성</option>
+                </select>
+            </div>
+            <div>
+                <label for="Major">전공:</label>
+                <select name="M" id="Major">
+                    <option value="CSE">컴퓨터공학부</option>
+                    <option value="MECHA">메카트로닉스공학부</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="introduce">자기소개: </label>
+                <textarea name="introduce" id="introduce" cols="50" rows="10" placeholder="자기소개를 입력하세요."></textarea>
+            </div>
+
+    </form> <!-- 결과 -->
+    <!-- 이전 결과 + 자기소개 란 생성 -->
+
+
+
+    <!-- 8. button 태그 사용 -->
+
+    <h2>8. 회원가입</h2>
+    <form action="my-app" method="get">
+        <div>
+            <label for="userid">아이디: </label>
+            <input type="text" id="userid" name="id" placeholder="아이디를 입력하세요." value="Here!"><br>
+        </div>
+        <div>
+            <label for="userpassword">비밀번호: </label>
+            <input type="password" id="userpassword" name="password" placeholder="비밀번호를 입력하세요.">
+
+            <div>
+                <label for="gender">성별: </label>
+                <select name="gender" id="gender">
+                    <option value="male">남성</option>
+                    <option value="female">여성</option>
+                </select>
+            </div>
+            <div>
+                <label for="Major">전공:</label>
+                <select name="M" id="Major">
+                    <option value="CSE">컴퓨터공학부</option>
+                    <option value="MECHA">메카트로닉스공학부</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="introduce">자기소개: </label>
+                <textarea name="introduce" id="introduce" cols="50" rows="10" placeholder="자기소개를 입력하세요."></textarea>
+            </div>
+            <button type="submit">제출</button>
+            <button type="reset">리셋</button>
+
+    </form> <!-- 결과 -->
+    <!-- 이전 결과 + 제출버튼 -->
+</body>
+
+</html>

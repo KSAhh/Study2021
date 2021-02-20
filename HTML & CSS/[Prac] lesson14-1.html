@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'Flex' Practice</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            /* defalut 마진 없애줌 */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:link,
+        a:visited,
+        a:active {
+            color: inherit;
+        }
+
+        header {
+            background-color: skyblue;
+        }
+
+        nav {
+            background-color: pink;
+        }
+
+        aside {
+            background-color: lightgray;
+        }
+
+        footer {
+            background-color: lightcoral;
+            padding: 30px;
+            text-align: center;
+        }
+
+        #main {
+            display: flex;
+            /* height가 100%인 상태에서 flex:1은 flex-grow상태 */
+            flex: 1;
+        }
+
+        .content {
+            flex: 30%;
+            padding: 40px;
+        }
+
+        .aside {
+            flex: 70%;
+            padding: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .header {
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* navbar a태그 */
+        .navbar a {
+            padding: 8px;
+            margin-right: 20px;
+        }
+
+        /* navbar에 마우스 올렸을 때 */
+        .navbar a:hover {
+            color: black;
+            background-color: white;
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer {
+            /* 사이트가 줄어도 footer가 깨지지 않기 위해 */
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>My Webpage</h1>
+    </header>
+    <nav class="navbar">
+        <a href="">Home</a>
+        <a href="">about</a>
+        <a href="">Q&A</a>
+    </nav>
+    <div id="main">
+        <article class="content">
+            <h2>About me</h2>
+            <h3>Introduce:</h3>
+            <p>My name is KSAhh and I'm a student.</p>
+        </article>
+        <aside class="aside">
+            <h2>AD</h2>
+            <p><strong>내게 기대 - bobby</strong><br><br>
+                내게 기대
+                내게 기대
+                내게 기대도 돼 Babe
+                내게 기대
+                넌 괜찮다고 해
+                But I can feel ur pain bae
+                느껴져 너의 눈이 말해 내게
+                마냥 행복한 듯 웃고 있다가도
+                너의 슬픈 말투를 느껴 Yeh ye
+                세상이 모질게 너에게 굴어서 인지
+                처음부터 너에게 행복은 없었던 건지
+                절대 이해할 순 없지 나 같은 놈은
+                근데 느껴져 니 안에 있는 외로움
+                괜찮다면 내게 기대도 돼
+                너의 슬픔 털어놔도 돼
+                왜냐면 넌 웃는 게 참 예뻐
+                그려져 내가 눈을 감을 때면
+                괜찮다면 내게 기대도 돼
+                너의 슬픔 털어놔도 돼
+                왜냐면 넌 웃는 게 참 예뻐
+                한 번만 더
+                (Smile for me)
+                넌 나를 행복하게 해
+                너도 나로 행복했음 해
+                내가 널 웃게 할 수 있다면
+                그걸로 난 내 삶에 만족해
+                넌 나를 행복하게 해
+                너도 나로 행복했음 해
+                내가 널 웃게 할 수 있다면
+                그걸로 난 내 삶에 만족해
+                니 어렸을 적 사진들 보면
+                넌 지금처럼 예뻤어
+                하나도 안 바뀌었지
+                아름다움 그 자체라서
+                단지 세상은 너에게
+                좀 더 잘 해야 했어
+                너 같은 진주알을
+                모래에 처박았었거든
+                넌 신을 믿지 않지만
+                난 신에게 감사해
+                지금이라도 나에게
+                너란 보석을 보내줘서
+                처음으로 아끼고 싶고
+                미래가 그려지는 너를
+                지키라고 나에게 그분은 말해줘서
+                Girl 원더우먼이 강하다 해서
+                그녀에게 상처를 줘도
+                된다는 법은 없는데도 말이야
+                넌 행복하기 위해
+                태어났다는 걸 알아
+                너의 거룩한 행복에
+                내가 섞이기를 바람
+                그 어떤 무게라도
+                혼자보단 둘이 나아
+                나의 까칠한 손이라도
+                넌 있는 힘껏 잡아
+                내가 너의 어깨가 돼줄게 곁에
+                어때 내 품에 기대도 좋아
+                나의 소중한 사람아
+                넌 나를 행복하게 해
+                너도 나로…
+            </p>
+        </aside>
+    </div>
+    <footer class="footer">
+        <h2>footer</h2>
+    </footer>
+</body>
+
+</html>

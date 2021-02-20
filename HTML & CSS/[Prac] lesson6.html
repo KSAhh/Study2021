@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+
+<body>
+    <!-- 3X3 테이블 -->
+    <table>
+        <tr>
+            <th>성별</th>
+            <th>학년</th>
+            <th>이름</th>
+        </tr>
+        <tr>
+            <td>여</td>
+            <td rowspan="2">3</td>
+            <td>Soo</td>
+        </tr>
+        <tr>
+            <td>여</td>
+            <td></td>
+            <td>병천면 꽃사슴</td>
+        </tr>
+    </table>
+
+    <br>
+
+    ----------------------------------<br>
+    <!-- 목록 -->
+
+    <!-- 순서 없는 목록 -->
+    <h3>장보기 목록</h3>
+    <ul>
+        <li>인형</li>
+        <li>초콜렛</li>
+        <li>굿즈</li>
+    </ul>
+
+    <!-- 순서 있는 목록 -->
+    <h3>To-Do 리스트</h3>
+    <!-- attribute : 시작 순서 설정, 역순 -->
+    <ol start="4" reversed>
+        <li>멋사 전체 과제</li>
+        <li>멋사 팀과제</li>
+        <!-- 리스트 중첩 -->
+        <ul> 리스트 중첩
+            <li>code lion</li>
+            <li>Github Blog</li>
+        </ul>
+        <li>단기현장실습</li>
+    </ol>
+    <!-- attribute : 타입 설정 -->
+    <ol type="A">
+        <li>Test_</li>
+        <!-- attribute : 숫자 지정 -->
+        <li value="4">Test__</li>
+        <li value="28">Test___</li>
+    </ol>
+</body>
+
+</html>

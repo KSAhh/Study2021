@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+
+        #inner {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            margin: 20px;
+            padding: 20px;
+            /* overflow: scroll; */
+
+
+            /* border 방법1 */
+            /* border-style: dashed solid dotted double;
+            border-width: 6px 8px 10px 12px;
+            border-color: red blue yellow green; */
+
+            /* border 방법2 */
+            border: 4px solid lemonchiffon;
+
+
+
+            /* 모서리 둥글게 방법1*/
+            border-radius: 12px;
+
+            /* 모서리 둥글게 방법2*/
+            border-radius: 30px 20px 10px 0 / 0 10px 20px 30px;
+        }
+
+
+        
+        /* padding과 margin */
+        #top {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            /* padding: 20px;
+            margin: 50px; */
+            box-sizing: content-box;
+            padding: 20px;
+
+        }
+
+        #bottom {
+            width: 200px;
+            height: 100px;
+            background-color: lemonchiffon;
+            /* padding: 20px;
+            margin: 20px; */
+            box-sizing: border-box;
+            padding: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="inner">
+            이것은 내용입니다. Baby, I don't feel so good
+        </div>
+        
+
+
+        <!-- padding & margin -->
+        <div id="top">
+            top
+        </div>
+        <div id="bottom">
+            bottom
+        </div>
+    </div>
+</body>
+
+</html>

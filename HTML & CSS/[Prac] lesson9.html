@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector</title>
+
+
+    <style>
+        /* type selector */
+        /*         
+        p {
+            color: red;
+        }
+       h2 {
+            color: blue;
+        }
+ */
+
+
+        /* id selector */
+        /* 
+        #lesson {
+            background-color: yellow;
+        }
+ */
+
+
+        /* class selector */
+        /* 
+        .contents {
+            font-size: 24px;
+        }
+ */
+
+
+
+        /* univeral selecotr */
+
+        /* 
+        * {
+            color: blueviolet;
+        }
+ */
+
+
+        /* attribute selector */
+
+        a[target="_blank"] {
+            color: burlywood;
+        }
+
+
+
+        /* Child selector */
+
+        article>p {
+            color: red;
+        }
+
+
+
+        /* Descendant selector */
+
+        article p {
+            color: blue;
+        }
+
+
+
+        /* Pseudo-class */
+
+        a:link {
+            color: yellow;
+        }
+
+        a:visited {
+            color: cyan;
+        }
+
+        a:hover {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Type, Universal, Id, Class type -->
+
+    <h1>LESSON9</h1>
+    <p class="contents">첫 번째 단락</p>
+    <h2 id="lesson">lesson9</h2>
+    <p class="contents">두 번째 단락</p>
+    <h3>레슨9</h3>
+    <p class="contents">세 번째 단락</p>
+
+
+
+    <!-- Attribue type -->
+
+    <a href="https://www.google.com/" target="_self">구글 현재창</a><br>
+    <a href="https://www.google.com/" target="_blank">구글 새 창</a><br>
+    <a href="https://www.google.com/" target="_self">구글 현재창</a><br>
+    <a href="https://www.google.com/" target="_self">구글 현재창</a><br>
+
+
+
+    <!-- Child selector -->
+
+    <article>
+        <div>
+            자식1
+            <p>후손1</p>
+        </div>
+        <div>
+            자식2
+            <p>후손2</p>
+        </div>
+        <p>자식3</p>
+    </article>
+
+
+
+    <!-- Pseudo-class selector -->
+    <a href="https://www.google.com">구글</a>
+</body>
+
+</html>

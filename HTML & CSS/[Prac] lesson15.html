@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상속 & 우선순위 </title>
+    <style>
+        /* 1. 상속 */
+        /* .target {
+            color: red;
+        } */
+
+
+
+        /* 2. 우선순위-중요도 */
+        /* div {
+            background-color: blue;
+            color: white;
+        } */
+
+
+
+        /* 3. 우선순위-명시도 */
+        /* p,
+        div {
+            background-color: black;
+        }
+
+        p {
+            color: red !important;
+        }
+
+        #id {
+            color: yellow;
+        }
+
+        div,
+        class {
+            color: blue;
+        }
+
+        .class {
+            color: blue;
+        }
+
+        div {
+            color: purple;
+        }
+
+        * {
+            color: white;
+        } */
+
+
+
+        /* 4. 선언순서 */
+        .first {
+            color: blue;
+        }
+
+        .second {
+            color: red;
+        }
+
+        p {
+            color: green;
+        }
+
+        p {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. 상속 -->
+    <!-- <div class="target">
+        상속
+        <h1>Title</h1>
+        <div>
+            Inner div
+            <h2>SubTitle</h2>
+            <p>책 읽고싶다 흐규흐규</p>
+        </div>
+    </div> -->
+
+
+
+    <!-- 2. 우선순위-중요도
+    CSS파일 연동보다, html파일 내의 style이 우선순위가 더 높음 -->
+    <!-- <div>
+        우선순위
+    </div> -->
+
+
+
+    <!-- 3. 우선순위-명시도 -->
+    <!-- <p id="id" style="color:orange;">p tag with id</p>
+    <div class="class">div tag with class</div> -->
+
+
+
+    <!-- 4. 선언 순서 -->
+    <p class="first second">First Second</p>
+</body>
+
+</html>
