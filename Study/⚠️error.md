@@ -16,6 +16,15 @@ Permission denied
 - 해결 : `Ctrl + Shift + P` → `python: Select Interpreter` → `자신이 쓰는 python버전 선택`   
         : [사이트](https://gentlesark.tistory.com/32)  
   
+error: failed to push some refs to "https://github.com/~~.git"  
+hint: Updates were rejected because the remote contains work that you do  
+hint: not have locally. This is usually caused by another repository pushing  
+hint: to the same ref. You may want to first integrate the remote changes  
+hint: (e.g., 'git pull ...') before pushing again.  
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.  
+- 원인 : Repository를 만들 때, README.md를 미리 생성하고 main branch에 push 하는 경우  
+- 해결 : `$ git push -u origin +master` +를 붙여줌  
+
 # vscode  
 - 주석 안될때 / 마이크로소프트 입력기로 변환  
 ```Ctrl + Shift```  
