@@ -41,6 +41,12 @@ warning: LF will be replaced by CRLF in Study/기타.md.
   - 이외에 에러 메세지 끄고 싶을 때 : git config --global core.safecrlf false  
   - [사이트](https://blog.jaeyoon.io/2018/01/git-crlf.html)  
 
+UnboundLocalError: local variable 'gun' referenced before assignment  
+- 원인 : 지역변수가 전역변수처럼 쓰였을 때  
+- 해결
+  - 전역변수로 변경  
+  - 함수 내에서 `global 변수명` 사용하거나, `함수형태 변경`  
+  
 # vscode  
 - 주석 안될때 / 마이크로소프트 입력기로 변환  
 ```Ctrl + Shift```  
