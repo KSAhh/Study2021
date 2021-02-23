@@ -3,7 +3,12 @@ TypeError: argument of type 'WindowsPath' is not iterable
   - 띄어쓰기 오류  
   - `$ python manage.py makemigrations` -> `$ python manage.py migration`  
 
+IndentationError: expected an indented block  
+- 원인 : if, while, for, def 등에서 들여쓰기 잘못된 부분 있음  
+- 해결 : 에러 메시지에서 line number 확인하고 소스코드 수정  
+
 inconsistent use of tabs and spaces in indentation  
+또는 IndentationError: unindent does not match any outer indentation level  
 - 원인 : 들여쓰기와 탭을 혼용할 경우  
 - 해결 : 들여쓰기를 지웠다가 탭을 해줌
 
@@ -47,10 +52,23 @@ UnboundLocalError: local variable 'gun' referenced before assignment
   - 전역변수로 변경  
   - 함수 내에서 `global 변수명` 사용하거나, `함수형태 변경`  
   
-# vscode  
-- 주석 안될때 / 마이크로소프트 입력기로 변환  
-```Ctrl + Shift```  
+SyntaxError: invalid syntax  
+- 원인 : 앞 문장의 `)` 생략된 경우  ex) `print("happy"` 
+- 해결 : `)` 추가  
 
+python에서 한글이 깨지는 경우  
+- 해결  
+  - [사이트](steady-coding.tistory.com/262)  
+  - vscode 기본 인코딩 옵션을 `euc-kr`로 변경 후 소스코드에 추가  
+    ```python
+      # -*- coding: euc-kr -*-
+      import sys
+      import io
+      sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
+      sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+    ```  
+  
+# vscode  
 migration 초기화  
 - https://velog.io/@kho5420/Django-Django-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%B4%88%EA%B8%B0%ED%99%94  
 - https://velog.io/@inyong_pang/Django-Migrate-%EC%B4%88%EA%B8%B0%ED%99%94
