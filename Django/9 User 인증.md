@@ -100,8 +100,8 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     from django.contrib.auth import authenticate, login, logout
         
     def logout_view(request):  # Django에서 제공하는 logout기능과 충돌하기 때문에 "_view"를 붙여줌으로써 충돌 없앰
-    logout(request)
-    return redirect("home")
+        logout(request)
+        return redirect("home")
     ```
 5. account app 내 urls.py
     ```python
@@ -112,43 +112,44 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
 6. base.html 일부
     ```python
     <a class = "nav_link" href="{% url 'logout'%}"> Logout </a> # 'logout': urlpatterns에 사용한 name
-    ```
+    ```  
+    
 - - -  
 
 ### 실습 - 회원가입  
-4(완성본은 10). account app 내 views.py
-    ```python
+4. (완성본은 10) account app 내 views.py 
+    ```python  
     from django.contrib.auth.forms import AuthenticationForm, UserCreationForm  # AuthenticationForm은 로그인, UserCreationFrom은 회원가입 용도
     
     def register_view(request):
         form = UserCreattionForm()
         return render(request, 'signup.html',{'form':form})
-    ```
-5. account app 내 urls.py
-    ```python
+    ```  
+5. account app 내 urls.py  
+    ```python  
     urlpatterns = [
         path('register/', register_view, name = 'signup"),
     ]
-    ```
-6(완성본은 9). account app 내 templates 폴더 내 signup.html 생성
-    ```python
+    ```  
+6. (완성본은 9) account app 내 templates 폴더 내 signup.html 생성  
+    ```python  
     {% extends 'base.html' %}
     {% block content %}
-    <h1>Sign Up</h1>
     
+    <h1>Sign Up</h1>
     <form action="" method="post"> # 이미지 없으므로 enctype 속성 사용 안 함
         {%csrf_token%}
         {{form.as_p}}
         <button type="submit"> submit </button>
     </form>
     {% endblock %}
-    ```
-7. base.hmtl 일부
+    ```  
+7. base.hmtl 일부  
     ```python
     <a class = "nav_link" href="{% url 'signup'%}"> Signup </a> # 'signup': urlpatterns에 사용한 name
     ```
-8. 이 상태로 서버를 돌려보면 지켜야 할 규칙이 많은 것을 확인할 수 있음
-9. account app 내 templates 폴더 내 signup.html
+8. 이 상태로 서버를 돌려보면 지켜야 할 규칙이 많은 것을 확인할 수 있음  
+9. account app 내 templates 폴더 내 signup.html  
     ```python
     {% extends 'base.html' %}
     {% block content %}
@@ -161,8 +162,8 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     </form>
     {% endblock %}
     ```  
-> action = {%url 'signup' %} 추가
-10. account app 내 views.py
+> action = {%url 'signup' %} 추가  
+10. account app 내 views.py  
     ```python
     from django.contrib.auth.forms import AuthenticationForm, UserCreationForm  # AuthenticationForm은 로그인, UserCreationFrom은 회원가입 용도
     
