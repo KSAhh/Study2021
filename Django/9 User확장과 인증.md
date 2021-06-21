@@ -16,6 +16,7 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
   >> AbstractBaseUser 위에서 `F11`을 누르면 또 다른 민감한 속성들이 나옴
   >> AbstractBaseUser가 부모클래스, AbstractUser가 자식 클래스
 
+- - -  
 
 ### 실습  
 1. manage.py 위치로 이동
@@ -90,9 +91,19 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     ```python
     <a class = "nav_link" href="{% url 'login'%}"> Login </a> # 'login': urlpatterns에 사용한 name
     ```
+    
+### 실습 - 로그인 이후 정보 띄우기
+11. blog app 내 home.html 일부
+    ```python
+    {% block contect %}
+        {% if user.is_authenticated %} # user가 authenticated인지, anonymous인지 상태 확인
+        {{user.username}}
+        {% endif %}
+    ```  
+- - -  
 
 ### 실습 - 로그아웃  
-11. account app 내 views.py (로그아웃)
+4. account app 내 views.py (로그아웃)
     ```python
     from django.contrib.auth import authenticate, login, logout
         
@@ -100,14 +111,22 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     logout(request)
     return redirect("home")
     ```
-12. account app 내 urls.py
+5. account app 내 urls.py
     ```python
     urlptterns = [
         path('logout/', logout_view, name="logout"),
     ]
     ```
-13. base.html 일부
+6. base.html 일부
     ```python
     <a class = "nav_link" href="{% url 'logout'%}"> Logout </a> # 'logout': urlpatterns에 사용한 name
     ```
+- - -  
+
+### 실습 - 회원가입  
+4. account app 내 views.py
+    ```python
+    def register_view
+    ```
+
 
