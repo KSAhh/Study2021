@@ -30,6 +30,10 @@ def new(request):
 
 - new.html파일
 ```python
+{% extends 'base.html' %}
+{% block content %}
+<h1>Write Your Blog</h1>
+
 <form action="{%url 'create'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
       {{form}} # 그대로 폼 받기
