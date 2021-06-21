@@ -248,5 +248,11 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
           form = RegisterForm() #############기본 로그인과 다른 점
           return render(request, 'signup.html',{'form':form})
     ```
+7. account app 내 admin.py  
+    ```python
+    from django.contrib import admin
+    from .models import CustomUser
     
+    admin.site.register(CustomUser)
+    ```
         
