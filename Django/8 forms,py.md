@@ -1,7 +1,7 @@
 ### 메타 클래스  
 - class 내의 class
 
-# 실습1 - forms.py 생성 후 기존의 form 태그 내부 대체하기
+### 실습1 - forms.py 생성 후 기존의 form 태그 내부 대체하기
 
 - forms.py파일
 ```python
@@ -39,7 +39,9 @@ def new(request):
 </form>
 ```
 
-# 실습2 - forms.py에 유효성 검사 추가하기
+- - -   
+
+### 실습2 - forms.py에 유효성 검사 추가하기
 
 - 기존 views.py일부
 ```python
