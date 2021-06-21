@@ -190,3 +190,63 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     {% if not user.is_authenticated %} # user가 authenticated인지, anonymous인지 상태 확인
     {% endif %}
     ```  
+- - -  
+- - -  
+
+# USER확장  
+
+### 실습  
+1. accout app내 models.py  
+    ```python
+    from django.db import models
+    from django.contrib.auth.models import AbstractUser
+    
+    class CustomUser(AbstractUser): # User model에 AbstractUser상속받음
+        # 원하는 column추가
+        nickname = models.CharField(max_length=100)
+        university = models.CharField(max_length=50)
+        location = models.CharField(max_length=200)
+    ```
+2. 프로젝트 내 settings.py에 사용할 모델을 설정해줌  
+    ```python
+    # 30줄 위치 
+    AUTH_USER_MODEL = 'account.customUser' #AUTH_USER_MODEL='앱.클래스명' 형식
+    ```  
+3. `$ python manage.py makemigrations`
+4. `$ python manage.py migrate`
+  - 오류발생⚠️ : `django.db.migrations.exceptions.InconsistentMigrationHistory: Migration admin.0001_initial is applied before its dependency account.0001_initial on databse 'default'.`
+  - 프로젝트 내 settings.py 35번째 줄 `'django.contrib.admin',` 주석처리
+  - 프로젝트 내 urls.py `path('admin/', admin.site.urls),` 주석처리
+  - 다시 `$ python manage.py migrate`  
+  - 안내 확인 가능 : `Applying account.0001_initial...OK`
+  - 주석 다시 풀어줌  
+5. MODELS에 맞는 회원가입 창 만들기. account app 내 forms.py 생성 
+  > account app 내 views.py에 있는 UserCreationForm을 상속받기  
+  
+    ```python 
+    from django contrib.auth.forms import UserCreationForm
+    from .models import CustomUser
+    class RegisterForm(UserCreationForm): # UserCreationForm을 상속받음
+        class Meta: # 메타클래스의 모델을 Custom model로 바꿀 것
+          model = CustomUser
+          fields = ['username', 'password1', 'password2, 'nickname', 'location', 'university'] # 추가된 3가지 column도 추가해줌
+     ```
+ 6. account app 내 views.py  
+    ```python
+    from django.contrib.auth.forms import AuthenticationForm, ############# UserCreationForm 필요없음
+    from .forms import RegisterForm ############# RegisterForm 불러옴
+    
+    def register_view(request):
+        if request.method == "POST": #POST방식으로 들어왔을 때
+          form = RegisterForm(request.POST) #############기본 로그인과 다른 점
+          if form.is_valid(): # 유효성 검사
+            user = form.save() # 폼 내의 꼭 필요한 정보가 없기 때문에 forms.py 응용할 때 처럼 임시저장할 필요없음. 즉, commit하지 않음
+            login(request, user)
+          return redirect('home') # indentation을 줄임. 유효성 검사를 통과하지 못해도 홈으로 가야하기 때문
+            
+        else:
+          form = RegisterForm() #############기본 로그인과 다른 점
+          return render(request, 'signup.html',{'form':form})
+    ```
+    
+        
