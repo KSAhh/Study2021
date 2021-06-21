@@ -92,14 +92,6 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
     <a class = "nav_link" href="{% url 'login'%}"> Login </a> # 'login': urlpatterns에 사용한 name
     ```
     
-### 실습 - 로그인 이후 정보 띄우기
-11. blog app 내 home.html 일부
-    ```python
-    {% block contect %}
-        {% if user.is_authenticated %} # user가 authenticated인지, anonymous인지 상태 확인
-        {{user.username}}
-        {% endif %}
-    ```  
 - - -  
 
 ### 실습 - 로그아웃  
@@ -124,9 +116,76 @@ class User(AbstractUser) # AbstractUser를 상속받으며 AbstractUser내의 co
 - - -  
 
 ### 실습 - 회원가입  
-4. account app 내 views.py
+4(완성본은 10). account app 내 views.py
     ```python
-    def register_view
+    from django.contrib.auth.forms import AuthenticationForm, UserCreationForm  # AuthenticationForm은 로그인, UserCreationFrom은 회원가입 용도
+    
+    def register_view(request):
+        form = UserCreattionForm()
+        return render(request, 'signup.html',{'form':form})
     ```
+5. account app 내 urls.py
+    ```python
+    urlpatterns = [
+        path('register/', register_view, name = 'signup"),
+    ]
+    ```
+6(완성본은 9). account app 내 templates 폴더 내 signup.html 생성
+    ```python
+    {% extends 'base.html' %}
+    {% block content %}
+    <h1>Sign Up</h1>
+    
+    <form action="" method="post"> # 이미지 없으므로 enctype 속성 사용 안 함
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit"> submit </button>
+    </form>
+    {% endblock %}
+    ```
+7. base.hmtl 일부
+    ```python
+    <a class = "nav_link" href="{% url 'signup'%}"> Signup </a> # 'signup': urlpatterns에 사용한 name
+    ```
+8. 이 상태로 서버를 돌려보면 지켜야 할 규칙이 많은 것을 확인할 수 있음
+9. account app 내 templates 폴더 내 signup.html
+    ```python
+    {% extends 'base.html' %}
+    {% block content %}
+    <h1>Sign Up</h1>
+    
+    <form action="{%url 'signup' %}" method="post"> # 이미지 없으므로 enctype 속성 사용 안 함
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit"> submit </button>
+    </form>
+    {% endblock %}
+    ```  
+> action = {%url 'signup' %} 추가
+10. account app 내 views.py
+    ```python
+    from django.contrib.auth.forms import AuthenticationForm, UserCreationForm  # AuthenticationForm은 로그인, UserCreationFrom은 회원가입 용도
+    
+    def register_view(request):
+        if request.method == "POST": #POST방식으로 들어왔을 때
+          form = UserCreationForm(request.POST)
+          if form.is_valid(): # 유효성 검사
+            user = form.save() # 폼 내의 꼭 필요한 정보가 없기 때문에 forms.py 응용할 때 처럼 임시저장할 필요없음. 즉, commit하지 않음
+            login(request, user)
+          return redirect('home') # indentation을 줄임. 유효성 검사를 통과하지 못해도 홈으로 가야하기 때문
+            
+        else:
+          form = UserCreattionForm()
+          return render(request, 'signup.html',{'form':form})
+    ```
+- - -  
 
-
+### 실습 - 로그인 이후 정보 띄우기  
+- html 내부에서 자유롭게 활용
+    ```python
+    {% if user.is_authenticated %} # user가 authenticated인지, anonymous인지 상태 확인
+    {% endif %}
+    
+    {% if not user.is_authenticated %} # user가 authenticated인지, anonymous인지 상태 확인
+    {% endif %}
+    ```  
