@@ -42,6 +42,7 @@
 ### path-converter  
 - 여러 객체 다루는 계층적 url이 필요할 경우 / url계층적 디자인  
 - 형식: `<type:name>`  
+- [관련 사이트](http://pythonstudy.xyz/python/article/311-URL-%EB%A7%A4%ED%95%91)  
 - ex) 페이지 url에 뜸  
       "www.dreamary.com/profile/1"  
       "www.dreamary.com/profile/2"  
