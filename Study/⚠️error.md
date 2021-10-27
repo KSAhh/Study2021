@@ -68,6 +68,10 @@ python에서 한글이 깨지는 경우
       sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
     ```  
   
+  
+Secrete key 비공개  
+[사이트](https://integer-ji.tistory.com/180)  
+
 # vscode  
 migration 초기화  
 - https://velog.io/@kho5420/Django-Django-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%B4%88%EA%B8%B0%ED%99%94  
