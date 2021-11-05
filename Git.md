@@ -1,4 +1,4 @@
-### github에 업로드  
+### Github에 업로드  
   ```python
   1. echo "# 레포지토리명" >> README.md                       # README.md 파일을 만들고 "# 레포지토리명"을 적음 / 필요한 프로그램이나 패키지를 적어줌
   2. $ git init                                               # git 배포  
@@ -14,6 +14,18 @@
   11. $ git push -u origin main (또는 $ git push remote이름 branch이름) # "origin"이라는 리모트이름 & master branch에 업로드  
   ```  
   
+### .gitignore  
+> Github에 올리지 않아도 되는 파일(Cash 등)을 올리지 않고 저장해주는 역할  
+```python
+    1. vscode에서 ".gitignore"파일 생성
+    2. gitignore (gitignore.io 또는 https://www.toptal.com/developers/gitignore) 접속
+    3. "VisualStudioCode", "Django", "Python" 입력 후 검색
+    4. Ctrl + A
+    5. 복사
+    6. 프로젝트 폴더 밑(manage.py가 있는 위치)에 ".gitignore"파일 생성 후 붙여넣기
+    7. 14번째 줄 media 밑에 "venv" 입력            # "venv"폴더를 안 올린다는 의미
+```
+
 ### Git 명령어
 ```python
   $ git status                             # git 저장소의 상태를 확인
