@@ -40,4 +40,5 @@
   $ git push origin 브랜치                 # 원격 저장소의 특정 브랜치에 업로드 
   $ git pull origin 브랜치                 # 원격 저장소의 특정 브랜치에서 변경사항 pull 해오기
   $ git clone http://원격 저장소 주소.git  # 원격 저장소에 있는 파일 전체 복사
+  $ git --version                          # 깃 버전 확인  
 ```
