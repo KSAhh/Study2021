@@ -9,7 +9,7 @@
 - model속성을 사용하면 serializer와 queryset은 자동으로 설정됨  
 - queryset, serializer_class 속성을 사용하면 API를 명시적으로 표현가능
 
-###### urls.py  
+##### urls.py  
 - view 대신 viewset을 사용했기 때문에 router 클래스로 API에 대한 URL이 자동 생성됨
 
 ##### Serialize / 직렬화  
