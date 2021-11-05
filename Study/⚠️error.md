@@ -67,8 +67,19 @@ python에서 한글이 깨지는 경우
       sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
       sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
     ```  
-  
-  
+push에 실패한 경우  
+  ``` remote: error: GH007: Your push would publish a private email address.
+  remote: You can make your email public or disable this protection by visiting:
+  ```  
+- 해결  
+  - [사이트]()  
+  - 방법1. Settings > Emails > Keep my email addresses private 체크해제
+  - 방법2. Settings > Emails > Keep my email addresses private 체크 > 고유 {ID}+{username}@users.noreply.github.com 확인  
+          ```
+          $ git config --global user.email "{ID}+{username}@users.noreply.github.com" 
+          $ git commit --amend --reset-author
+          ```  
+          
 Secrete key 비공개  
 [사이트](https://integer-ji.tistory.com/180)  
 
