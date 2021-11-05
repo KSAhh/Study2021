@@ -24,7 +24,10 @@
     5. 복사
     6. 프로젝트 폴더 밑(manage.py가 있는 위치)에 ".gitignore"파일 생성 후 붙여넣기
     7. 14번째 줄 media 밑에 "venv" 입력            # "venv"폴더를 안 올린다는 의미
-```
+```  
+
+### 디렉토리 vscode로 열기  
+- 디렉토리에서 마우스 우클릭 → Git Bash Here 클릭 → `code .` 입력 → vscode열림
 
 ### Git 명령어
 ```python
