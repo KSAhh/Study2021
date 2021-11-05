@@ -21,3 +21,13 @@
 ##### API 접근 권한 오류  
 - "detail": "Authentication credentials were not provided.  
 - 해결 : ./admin에서 관리자 로그인 이후 정상 작동  
+
+#### 실습  
+- API 실행  
+> 데이터 입력하면 적용됨  
+> `curl -H ...`
+  ![image](https://user-images.githubusercontent.com/66674138/140512901-5f2a46c9-4b18-4d15-b982-24c6a9928f47.png)  
+  ![image](https://user-images.githubusercontent.com/66674138/140512993-d27eb63c-d459-4942-998d-ee1d5df54f86.png)  
+ 
+- ![image](https://user-images.githubusercontent.com/66674138/140513144-5e2de79e-4958-4f54-954c-f05e14d2c5d1.png)  
+- 
