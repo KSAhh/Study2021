@@ -1,10 +1,14 @@
-##### pygments 패키지  
-- 코드 highliting  
 
+#### 직렬화  
+- instance to JSON  
 
-오류  
+#### 역직렬화  
+- JSON to instance  
+
+#### 오류  
 - `ImportError: cannot import name 'Required' from 'typing_extensions'`  
 - 해결 : 버전 문제 `pip install typing_extensions==3.10.0.0`  
+
 
 - - -  
 
@@ -17,7 +21,7 @@
 - pygments : 코드 highlighting
 
 2. "snippets" app 생성 및 추가
-``` 
+```python 
   # project/settings.py
   INSTALLED_APPS = [
       ...
@@ -27,7 +31,7 @@
 ```
 
 3. 모델 생성
-```
+```python 
   # app/models.py
   ...
   from pygments.lexers import get_all_lexers
@@ -53,11 +57,11 @@
   $ python manage.py migrate
 ```
 
-4. Serializer 생성
+4-1. Serializer 생성
 - instance를 JSON으로 직렬화
 - json을 instance로 역질렬화
 - Form과 유사 : `required`, `max_length` ...
-```
+```python 
   # app/serializers.py
   from rest_framework import serializers
   from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
@@ -87,13 +91,23 @@
           instance.save()
           return instance
 ```
-
-5. serializer 사용
+4-2. ModelSerializer 생성
+```python
+  class  SnippetSerializer(serializers.ModelSerializer):
+      class Meta:
+          model = Snippet
+          fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
 ```
+
+
+5. serializer 사용  
+- 일반적인 model : serializer = SnippetSerializer(snippet)  
+- queryset : serializer = SnippetSerializer(Snippet.objects.all(), many=True)  
+```python 
   python manage.py shell    # shell 실행
   
   # instance 생성
-  from snippets.models import Snippet
+  from snippets.models import Snippet   # from [app명].models import [클래스]
   from snippets.serializers import SnippetSerializer
   from rest_framework.renderers import JSONRenderer
   from rest_framework.parsers import JSONParser
@@ -103,7 +117,7 @@
   snippet = Snippet(code='print("hello, world")\n')
   snippet.save()
   
-  # serialization1
+  # serialization1 - 일반적인 model
   serializer = SnippetSerializer(snippet)
   serializer.data
   #### {'id': 2, 'title': '', 'code': 'print("hello, world")\n', 'linenos': False, 'language': 'python', 'style': 'friendly'}
@@ -113,9 +127,10 @@
   content
   #### b'{"id": 2, "title": "", "code": "print(\\"hello, world\\")\\n", "linenos": false, "language": "python", "style": "friendly"}'
 
-# serialization1
-  serializer = SnippetSerializer(snippet)
+  # serialization2 - queryset
+  serializer = SnippetSerializer(Snippet.objects.all(), many=True)
   serializer.data
+  # [OrderedDict([('id', 1), ('title', ''), ('code', 'foo = "bar"\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 2), ('title', ''), ('code', 'print("hello, world")\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')]), OrderedDict([('id', 3), ('title', ''), ('code', 'print("hello, world")'), ('linenos', False), ('language', 'python'), ('style', 'friendly')])]
 
   # deserialization
   import io
@@ -131,4 +146,84 @@
   #### OrderedDict([('title', ''), ('code', 'print("hello, world")\n'), ('linenos', False), ('language', 'python'), ('style', 'friendly')])
   serializer.save()
   #### <Snippet: Snippet object>
+```  
+
+6. ModelSerializer 사용
+```python
+  # app/serializers.py
+  class SnippetSerializer(serializers.ModelSerializer):
+    ...
+    class Meta:
+        model = Snippet
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
+```  
+
+7-1. READ, CREATE 기능  
+- GET : 기존 데이터 보여줌  
+- POST : 새 데이터 생성  
+```python
+  # app/views.py
+  from django.http import HttpResponse, JsonResponse
+  from django.views.decorators.csrf import csrf_exempt
+  from rest_framework.parsers import JSONParser
+  from snippets.models import Snippet
+  from snippets.serializers import SnippetSerializer
+  
+  @csrf_exempt
+  def snippet_list(request):
+      """
+      List all code snippets, or create a new snippet.
+      """
+      if request.method == 'GET':
+          snippets = Snippet.objects.all()
+          serializer = SnippetSerializer(snippets, many=True)
+          return JsonResponse(serializer.data, safe=False)
+
+      elif request.method == 'POST':
+          data = JSONParser().parse(request)
+          serializer = SnippetSerializer(data=data)
+          if serializer.is_valid():
+              serializer.save()
+              return JsonResponse(serializer.data, status=201)
+          return JsonResponse(serializer.errors, status=400)
 ```
+
+7-2. SEARCH, UPDATE, DELETE  
+- GET : 검색   
+- PUT : 생성/업데이트
+- DELETE : 삭제  
+```python
+  @csrf_exempt
+  def snippet_detail(request, pk):
+      """
+      Retrieve, update or delete a code snippet.
+      """
+      try:
+          snippet = Snippet.objects.get(pk=pk)
+      except Snippet.DoesNotExist:
+          return HttpResponse(status=404)
+
+      if request.method == 'GET':
+          serializer = SnippetSerializer(snippet)
+          return JsonResponse(serializer.data)
+
+      elif request.method == 'PUT':
+          data = JSONParser().parse(request)
+          serializer = SnippetSerializer(snippet, data=data)
+          if serializer.is_valid():
+              serializer.save()
+              return JsonResponse(serializer.data)
+          return JsonResponse(serializer.errors, status=400)
+
+      elif request.method == 'DELETE':
+          snippet.delete()
+          return HttpResponse(status=204)
+```  
+
+
+
+
+
+
+
+
