@@ -79,7 +79,10 @@ push에 실패한 경우
           $ git config --global user.email "{ID}+{username}@users.noreply.github.com" 
           $ git commit --amend --reset-author
           ```  
-          
+
+http 명령어를 사용할 수 없을 때  
+- 해결 `$ pip install httpie`  
+
 Secrete key 비공개  
 [사이트](https://integer-ji.tistory.com/180)  
 
