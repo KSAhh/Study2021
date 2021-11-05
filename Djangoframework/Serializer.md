@@ -112,8 +112,6 @@
   from rest_framework.renderers import JSONRenderer
   from rest_framework.parsers import JSONParser
   
-  snippet = Snippet(code='foo = "bar"\n')
-  snippet.save()
   snippet = Snippet(code='print("hello, world")\n')
   snippet.save()
   
@@ -219,6 +217,21 @@
           snippet.delete()
           return HttpResponse(status=204)
 ```  
+
+8-1. 전체 데이터 목록 읽기  
+```python
+  $ python manage.py runserver  
+  $ http http://127.0.0.1:8000/snippets/
+```  
+
+8-2. 특정 데이터 목록 읽기  
+```python
+  $ http http://127.0.0.1:8000/snippets/2/
+```  
+
+
+
+
 
 
 
