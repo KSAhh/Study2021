@@ -1,3 +1,10 @@
+### admin 변경목록  
+- 기본값
+  - 페이지 당 100개 항목
+  - 자동 페이지네이션
+
+- - -  
+
 1. 
 ### 필드 정렬  
   ```python
@@ -49,6 +56,8 @@
         ...
   ```  
   
+- - -  
+
 3. 기능  
 ### 열 추가 (정렬 포함 / 날짜 정렬 안됨)
   ```python 
@@ -89,6 +98,8 @@
     # polls/admin.py
     class QuestionAdmin(admin.ModelAdmin):
         ...
-        search_fields = ['question_text']
+        search_fields = ['question_text']   # question_text 필드 검색
   ```  
-  
+- 내부적으로 LIKE query 사용  
+- 검색 필드 수를 제한하면 효율적으로 DB 검색  
+- 
