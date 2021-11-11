@@ -84,7 +84,8 @@ http 명령어를 사용할 수 없을 때
 - 해결 `$ pip install httpie`  
 
 Secrete key 비공개  
-[사이트](https://integer-ji.tistory.com/180)  
+[사이트1](https://integer-ji.tistory.com/180)  
+[사이트2](https://wave1994.tistory.com/64)  
 
 # vscode  
 migration 초기화  
