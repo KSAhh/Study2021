@@ -36,6 +36,7 @@
   $ git branch                             # 현재 브랜치 확인
   $ git branch 브랜치 명                   # 새로운 브랜치 생성
   $ git checkout 브랜치 명                 # 해당 브랜치로 이동
+  $ git branch -a                          # 전체 브랜치 리스트  
   
   $ git push origin 브랜치                 # 원격 저장소의 특정 브랜치에 업로드 
   $ git pull origin 브랜치                 # 원격 저장소의 특정 브랜치에서 변경사항 pull 해오기
