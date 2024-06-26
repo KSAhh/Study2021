@@ -32,4 +32,9 @@ Download Windows installer (64-bit)
 
 >>>
 REPL (Read Evaluate Print Loop) : 파이썬 구문 입력하고 결과 볼 수 있는 도구
+
+
+프롬프트 종료
+quit() 또는 exit()
+
 """
